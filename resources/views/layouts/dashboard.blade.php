@@ -15,13 +15,15 @@
 		<link href="{{ asset('assets/backoffice/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
 		<link href="{{ asset('assets/backoffice/plugins/custom/prismjs/prismjs.bundle.css') }}" rel="stylesheet" type="text/css" />
 		<link href="{{ asset('assets/backoffice/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
-
+        <link href="{{ asset('assets/backoffice/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
+        {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css"> --}}
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
 	</head>
 	<body id="kt_body" class="header-fixed subheader-enabled page-loading">
 		<div class="d-flex flex-column flex-root">
 			<div class="d-flex flex-row flex-column-fluid page">
-				<div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+				<div class="d-flex flex-column flex-row-fluid wrapper" style="margin-top: 3%" id="kt_wrapper">
 					<div class="header-menu-wrapper header-menu-wrapper-left" id="kt_header_menu_wrapper">
 						<div class="container">
 							<!--begin::Header Menu-->
@@ -2168,7 +2170,10 @@
 		<script src="{{ asset('assets/backoffice/plugins/custom/prismjs/prismjs.bundle.js') }}"></script>
 		<script src="{{ asset('assets/backoffice/js/scripts.bundle.js') }}"></script>
 		<script src="{{ asset('assets/backoffice/plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
-		<script src="{{ asset('assets/backoffice/') }}assets/js/pages/widgets.js"></script>
+		<script src="{{ asset('assets/backoffice/js/pages/widgets.js') }}"></script>
+
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
+
 	</body>
 	<!--end::Body-->
 </html>

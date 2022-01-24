@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class ticket extends Model
 {
     use HasFactory;
+
+    public function lot(){
+        return $this->belongsTo('App\Models\tombola','tombola_id');
+    }
 }

@@ -24,3 +24,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/bo/admin-002-5/dashboard',[App\Http\Controllers\BackOfficeController::class, 'dashboard'])->name('admin.dashboard');
 //Gestion LOT Tombola
 Route::get('/bo/admin-002-5/tombola/index',[App\Http\Controllers\TombolaController::class, 'index'])->name('admin.tombola.index');
+Route::post('/bo/admin-002-5/tombola/store',[App\Http\Controllers\TombolaController::class, 'store'])->name('admin.tombola.store');

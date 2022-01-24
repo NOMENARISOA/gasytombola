@@ -16,6 +16,7 @@ class CreateTombolasTable extends Migration
         Schema::create('tombolas', function (Blueprint $table) {
             $table->id();
             $table->date("date_tirage");
+            $table->integer("status");
             $table->timestamps();
         });
     }

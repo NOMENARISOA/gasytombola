@@ -17,6 +17,7 @@ class CreateTombolaTicketsTable extends Migration
             $table->id();
             $table->bigInteger("tombola_id")->index();
             $table->bigInteger("ticket_id")->index();
+            $table->bigInteger("lot_id")->index();
             $table->timestamps();
         });
     }
