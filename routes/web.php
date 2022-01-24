@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,3 +22,5 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/bo/admin-002-5/dashboard',[App\Http\Controllers\BackOfficeController::class, 'dashboard'])->name('admin.dashboard');
+//Gestion LOT Tombola
+Route::get('/bo/admin-002-5/tombola/index',[App\Http\Controllers\TombolaController::class, 'index'])->name('admin.tombola.index');
