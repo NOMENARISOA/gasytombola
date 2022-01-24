@@ -41,7 +41,7 @@
     </div>
     <div class="card-body">
         <!--begin: Datatable-->
-        <table class="table table-bordered table-hover table-checkable" id="datatable" style="margin-top: 13px !important">
+        <table class="table table-bordered table-hover table-checkable text-center" id="datatable" style="margin-top: 13px !important">
             <thead>
                 <tr>
                     <th>Identification</th>
@@ -53,13 +53,13 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="text-center">
                 @foreach ($tombolas as $tombola )
                     <tr>
                         <td>{{ $tombola->id }}</td>
                         <td>{{ $tombola->created_at }}</td>
                         <td>{{ $tombola->date_tirage }} </td>
-                        <td>{{ $tombola->lot->count() }}</td>
+                        <td>{{ $tombola->lot->sum("nombre") }}</td>
                         <td>{{ $tombola->ticket->count() }}</td>
                         <td>
                             @if($tombola->status == 0)
@@ -70,7 +70,18 @@
                                 <span class="badge badge-dark">Terminer</span>
                             @endif
                         </td>
-                        <td>698 Oriole Pass</td>
+                        <td>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <a href="{{ route('admin.lot.index',[$tombola->id]) }}" class="btn btn-sm btn-info" style="width: 100%">Lot</a>
+                                    <a class="btn btn-sm btn-success" style="width: 100%;margin-top: 2%">Ticket</a>
+                                </div>
+                                <div class="col-md-6">
+                                    <button class="btn btn-sm btn-warning" style="width: 100%;">Modifier</button>
+                                    <button class="btn btn-sm btn-danger" style="width: 100%;margin-top: 2%">Supprimer</button>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                 @endforeach
 
