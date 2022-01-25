@@ -16,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Auth::routes();
 
@@ -35,7 +33,9 @@ Route::get('/bo/admin-002-5/company/index',[App\Http\Controllers\CompanyControll
 Route::post('/bo/admin-002-5/company/store',[App\Http\Controllers\CompanyController::class, 'store'])->name('admin.company.store');
 
 
-
+//FRONT OFFICE
+Route::get('/', [App\Http\Controllers\FrontController::class, 'welcome'])->name('welcome');
+Route::get('/tombola', [App\Http\Controllers\FrontController::class, 'tombola'])->name('tombola.index');
 
 
 //Ouverture Fichier
