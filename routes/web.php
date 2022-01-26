@@ -37,7 +37,10 @@ Route::post('/bo/admin-002-5/company/store',[App\Http\Controllers\CompanyControl
 Route::get('/', [App\Http\Controllers\FrontController::class, 'welcome'])->name('welcome');
 Route::get('/tombola', [App\Http\Controllers\FrontController::class, 'tombola'])->name('tombola.index');
 
-
+//USER FRONT OFFICE
+Route::post('/register/user',[App\Http\Controllers\UserController::class, 'store'])->name('user.store');
+//Ticket
+Route::get('/ticket/{tombola_id}',[App\Http\Controllers\TicketController::class, 'index'])->name('ticket.index');
 //Ouverture Fichier
 Route::get('/{directory}/{filename}', function ($directory,$filename)
 {

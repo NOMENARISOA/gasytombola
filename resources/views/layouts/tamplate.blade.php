@@ -76,7 +76,13 @@
                                     </li>
 
                                 </ul>
-                                    <a href=""><i class="icofont-ui-user"></i> Connexion</a>
+                                @if(!Auth::guard('users')->check())
+                                    <a href="{{ route('login') }}"><i class="icofont-ui-user"></i> Connexion</a>
+                                @else
+                                    {{ Auth::guard('users')->user()->name }} <br>
+                                    <br>
+                                    <a href="{{ route('logout') }}"><i class="icofont-ui-user"></i> Déconnexion</a>
+                                @endif
                             </div>
                         </div>
                         <div class="header-bottom">
@@ -92,7 +98,8 @@
                                         <li><a href="tournament.html">Blog</a></li>
                                         <li><a href="contact.html">Contact</a></li>
                                     </ul>
-                                    <a href="signup.html" class="signup"><i class="icofont-cart-alt"></i> <span>Ticket pour la prochain tirage</span></a>
+
+                                    <a href="{{ route("ticket.index",[App\Models\tombola::where('status','=',1)->orderby("date_tirage","ASC")->first()->id]) }}" class="signup"><i class="icofont-cart-alt"></i> <span>Ticket pour la prochain tirage</span></a>
 
                                     <!-- toggle icons -->
                                     <div class="header-bar d-lg-none">

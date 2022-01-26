@@ -1,7 +1,41 @@
-@extends('layouts.app')
+@extends('layouts.tamplate')
 
 @section('content')
-<div class="container">
+<!-- Login Section Section Starts Here -->
+    <div class="login-section padding-top padding-bottom">
+        <div class=" container" style="margin-top: 5%">
+            <div class="account-wrapper">
+                <h3 class="title">Se connecter</h3>
+                <form class="account-form text-start" method="POST" action="{{ route('login') }}">
+                    @csrf
+                    <div class="form-group">
+						<label>Adresse email</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+						<label>Mot de passe:</label>
+                        <input type="password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <div class="d-flex justify-content-between flex-wrap pt-sm-2">
+                            <div class="checkgroup">
+                                <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                <label for="remember">Remember Me</label>
+                            </div>
+                            <a href="{{ route('password.request') }}">Mot de passe oublié?</a>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button  type="submit" class="d-block default-button"><span>Se connecter</span></button>
+                    </div>
+                </form>
+                <div class="account-bottom">
+                    <span class="d-block cate pt-10">Pas de compte ? <a href="{{ route('register') }}"> Inscrivez-vous ici</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+{{--  <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -69,5 +103,5 @@
             </div>
         </div>
     </div>
-</div>
+</div>  --}}
 @endsection
