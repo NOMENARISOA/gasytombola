@@ -31,4 +31,6 @@ class LotController extends Controller
         return redirect()->back();
 
     }
+
+
 }

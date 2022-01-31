@@ -18,7 +18,9 @@
                                     <p>Date du tirage : {{ Carbon\Carbon::parse($tombola->date_tirage)->isoFormat("DD MMM YYYY") }}</p>
                                 </div>
                                 <div class="price-bottom">
-                                    <a href="#" class="default-button"><span>Acheter</span></a>
+                                    <button type="button" onclick="checkout()" class="default-button"><span>
+                                        <img class="payment-logo paypal" style="width: 50%" src="{{asset('https://pro.ariarynet.com/img/logoVanilla.png')}}" alt=""> <br> Acheter
+                                    </span></button>
                                 </div>
                             </div>
                         </div>
@@ -28,4 +30,22 @@
         </div>
     </div>
 </section>
+<script>
+    function checkout(){
+        var tombola = {{ $tombola->id }};
+        var number_ticket = {{ $ticket_number }};
+        $.ajax({
+            url: '{{route('paiement.checkout',[$tombola->id])}}',
+            type: 'post',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {tombola_id: tombola, ticket_number : number_ticket},
+            success: function (response,ticket_number) {
+                window.open(response.url,"_self")
+            }
+        });
+        console.log('ok');
+    }
+</script>
 @endsection

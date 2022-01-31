@@ -6,7 +6,7 @@
 	<meta charset="utf-8">
 	<title>Casina Partners</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 	<!-- site favicon -->
 	<link rel="icon" type="image/png" href="assets/images/favicon.png">
 	<!-- Place favicon.ico in the root directory -->
@@ -79,9 +79,7 @@
                                 @if(!Auth::guard('users')->check())
                                     <a href="{{ route('login') }}"><i class="icofont-ui-user"></i> Connexion</a>
                                 @else
-                                    {{ Auth::guard('users')->user()->name }} <br>
-                                    <br>
-                                    <a href="{{ route('logout') }}"><i class="icofont-ui-user"></i> Déconnexion</a>
+                                    <a href="{{ route('user.profil') }}"><i class="icofont-ui-user"></i> {{ Auth::guard('users')->user()->name }} </a>
                                 @endif
                             </div>
                         </div>

@@ -39,8 +39,11 @@ Route::get('/tombola', [App\Http\Controllers\FrontController::class, 'tombola'])
 
 //USER FRONT OFFICE
 Route::post('/register/user',[App\Http\Controllers\UserController::class, 'store'])->name('user.store');
+Route::get('/user/profil',[App\Http\Controllers\UserController::class, 'profil'])->name('user.profil');
 //Ticket
 Route::get('/ticket/{tombola_id}',[App\Http\Controllers\TicketController::class, 'index'])->name('ticket.index');
+//PAYEMENT
+Route::post('/paiement/{id}/checkout',[App\Http\Controllers\TicketController::class, 'checkout'])->name('paiement.checkout');
 //Ouverture Fichier
 Route::get('/{directory}/{filename}', function ($directory,$filename)
 {

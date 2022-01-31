@@ -25,4 +25,8 @@ class UserController extends Controller
         }
 
     }
+
+    public function profil(){
+        return view('user.profil');
+    }
 }
