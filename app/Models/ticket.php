@@ -9,7 +9,7 @@ class ticket extends Model
 {
     use HasFactory;
 
-    public function lot(){
+    public function tombola(){
         return $this->belongsTo('App\Models\tombola','tombola_id');
     }
 }

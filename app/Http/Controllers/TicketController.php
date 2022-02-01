@@ -25,8 +25,21 @@ class TicketController extends Controller
         $ticket_exist = ticket::where('user_id','=',$user->id)->where('tombola_id','=',$request->get("tombola_id"))->get();
 
         if($ticket_exist->count() > 0){
+            if($ticket_exist->first()->status == 0){
 
-            return response()->json(['url' =>  route('ticket.index',[$request->get("tombola_id")]), 'idpanier' =>  $request->get("ticket_number")]);
+                $vanillapay = new vanillapay();
+
+                $reference = $request->get("ticket_number");
+                $idpanier = $request->get("ticket_number");
+                $response = $vanillapay->payer($user->name,'2000',$reference,$idpanier);
+
+                return response()->json(['url' =>  'https://moncompte.ariarynet.com/payer/'.$response, 'idpanier' => $idpanier]);
+
+            }else{
+
+                return response()->json(['url' =>  route('user.ticket'), 'idpanier' =>  $request->get("ticket_number")]);
+            }
+
 
         }else{
 
@@ -45,5 +58,13 @@ class TicketController extends Controller
             return response()->json(['url' =>  'https://moncompte.ariarynet.com/payer/'.$response, 'idpanier' => $idpanier]);
         }
 
+    }
+
+    public  function repayTicket($ticket_number){
+        $ticket = ticket::where('number','=',$ticket_number)->first();
+        $tombola = $ticket->tombola;
+        $user = Auth::guard('users')->user();
+
+        return view('ticket.index',compact('tombola','ticket_number'));
     }
 }

@@ -40,8 +40,10 @@ Route::get('/tombola', [App\Http\Controllers\FrontController::class, 'tombola'])
 //USER FRONT OFFICE
 Route::post('/register/user',[App\Http\Controllers\UserController::class, 'store'])->name('user.store');
 Route::get('/user/profil',[App\Http\Controllers\UserController::class, 'profil'])->name('user.profil');
+Route::get('/user/ticket',[App\Http\Controllers\UserController::class, 'ticket'])->name('user.ticket');
 //Ticket
 Route::get('/ticket/{tombola_id}',[App\Http\Controllers\TicketController::class, 'index'])->name('ticket.index');
+Route::get('/ticket/repayTicket/{ticket_number}',[App\Http\Controllers\TicketController::class, 'repayTicket'])->name('ticket.repay');
 //PAYEMENT
 Route::post('/paiement/{id}/checkout',[App\Http\Controllers\TicketController::class, 'checkout'])->name('paiement.checkout');
 //Ouverture Fichier

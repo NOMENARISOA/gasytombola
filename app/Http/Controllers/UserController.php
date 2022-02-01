@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ticket;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -28,5 +30,9 @@ class UserController extends Controller
 
     public function profil(){
         return view('user.profil');
+    }
+    public function ticket(){
+        $tickets = ticket::where('user_id','=',Auth::guard('users')->user()->id)->get();
+        return view('user.ticket',compact('tickets'));
     }
 }

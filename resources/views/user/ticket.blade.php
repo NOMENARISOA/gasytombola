@@ -13,24 +13,33 @@
         border-radius: 5px
     }
 </style>
-<table id="example" class="display" style="width:100%">
+<table id="example" class="display text-center" style="width:100%">
     <thead>
         <tr>
             <th>Date du Tirage</th>
             <th>Nombre de Lot</th>
             <th>Numéro du ticket</th>
             <th>Etat du ticket</th>
-            <th>Action</th>
+
         </tr>
     </thead>
     <tbody>
+        @foreach ($tickets as $ticket )
         <tr>
-            <td>Date du Tirage</td>
-            <td>Nombre de Lot</td>
-            <td>Numéro du ticket</td>
-            <td>Etat du ticket</td>
-            <td>Action</td>
+            <td>{{ $ticket->tombola->date_tirage }}</td>
+            <td>{{ $ticket->tombola->lot->sum("nombre") }}</td>
+            <td>{{ $ticket->number }}</td>
+            <td >
+                @if($ticket->status == 0)
+                    <span class="btn btn-danger"> Non payer</span> <br>
+                    <a href="{{ route('ticket.repay',[$ticket->number]) }}" style="margin-top: 2%" class="btn btn-warning"> Payer maintenant</a>
+                @else
+                    <span class="btn btn-success"> Payer</span>
+                @endif
+            </td>
+
         </tr>
+        @endforeach
 
     </tbody>
 
@@ -40,4 +49,5 @@
         $('#example').DataTable({searching: false, info: false});
     } );
 </script>
+
 @endsection

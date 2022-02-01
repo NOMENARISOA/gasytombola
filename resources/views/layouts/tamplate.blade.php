@@ -19,7 +19,7 @@
 	<link rel="stylesheet" href="{{ asset('assets/frontoffice/css/lightcase.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/frontoffice/css/bootstrap.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/frontoffice/css/style.min.css') }}">
-
+    <script src="{{ asset('assets/frontoffice/js/vendor/jquery-3.6.0.min.js') }}"></script>
 </head>
 
 <body>
@@ -79,7 +79,7 @@
                                 @if(!Auth::guard('users')->check())
                                     <a href="{{ route('login') }}"><i class="icofont-ui-user"></i> Connexion</a>
                                 @else
-                                    <a href="{{ route('user.profil') }}"><i class="icofont-ui-user"></i> {{ Auth::guard('users')->user()->name }} </a>
+                                    <a href="{{ route('user.ticket') }}"><i class="icofont-ui-user"></i> {{ Auth::guard('users')->user()->name }} </a>
                                 @endif
                             </div>
                         </div>
@@ -295,7 +295,7 @@
 
 
 	<!-- All Needed JS -->
-	<script src="{{ asset('assets/frontoffice/js/vendor/jquery-3.6.0.min.js') }}"></script>
+
 	<script src="{{ asset('assets/frontoffice/js/vendor/modernizr-3.11.2.min.js') }}"></script>
 	<script src="{{ asset('assets/frontoffice/js/circularProgressBar.min.js') }}"></script>
 	<script src="{{ asset('assets/frontoffice/js/isotope.pkgd.min.js') }}"></script>
